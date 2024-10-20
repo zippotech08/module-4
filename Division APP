@@ -1,0 +1,42 @@
+namespace DivisionApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the first number:");
+            string input1 = Console.ReadLine();
+            Console.WriteLine("Enter the second number:");
+            string input2 = Console.ReadLine();
+
+            try
+            {
+                int number1 = Convert.ToInt32(input1);
+                int number2 = Convert.ToInt32(input2);
+
+                int result = Divide(number1, number2);
+                Console.WriteLine($"The result of division is: {result}");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Error: One or both inputs are not valid integers.");
+                Console.WriteLine($"Details: {ex.Message}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Error: Division by zero is not allowed.");
+                Console.WriteLine($"Details: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An unexpected error occurred.");
+                Console.WriteLine($"Details: {ex.Message}");
+            }
+        }
+
+        static int Divide(int numerator, int denominator)
+        {
+            return numerator / denominator;
+        }
+    }
+}
